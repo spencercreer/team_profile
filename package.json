@@ -1,0 +1,28 @@
+{
+  "name": "team_profile",
+  "version": "1.0.0",
+  "description": "Object oriented programming team profile generator.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spencercreer/team_profile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spencercreer/team_profile/issues"
+  },
+  "homepage": "https://github.com/spencercreer/team_profile#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}

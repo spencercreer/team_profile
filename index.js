@@ -219,6 +219,7 @@ function createIntern(){
 }
 
 function generateHtml(){
+
     let gHtml = `<!doctype html>
     <html lang="en">
       <head>
@@ -231,36 +232,39 @@ function generateHtml(){
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       </head>
       <body>
-          <header>
-    
-          </header>
           <main>
               <div class="jumbotron">
-                  <h1 class="display-3 text-center">My Team</h1>
-                  <!-- <p class="lead">Jumbo helper text</p> -->
+                  <h1 class="display-3 text-center">Team Profile</h1>
                   <hr class="my-2">
-                  <!-- <p>More info</p> -->
-                  <!-- <p class="lead">
-                      <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-                  </p> -->
-                  <div id="team-profile">`
+                  <div id="team-profile" class="text-center">`
             // for each element of teamMembers array, append html to index.html
             for( i=0; i < teamMembers.length; i++){
+                let hrefGithub;
+                let attr;
+                if(teamMembers[i].getRole() === "Manager"){
+                    hrefGithub = "";
+                    attr = "Office: "
+                } else if(teamMembers[i].getRole() === "Engineer"){
+                    hrefGithub = `https://github.com/${teamMembers[i].getAttr()}/`;
+                    attr = "GitHub: "
+                } else {
+                    hrefGithub = "";
+                    attr = "School: "
+                }
                 gHtml += `
-                    <div class="card text-white bg-secondary mb-3">
-                        <div class="card-header">${teamMembers[i].name}</div>
-                        <div class="card-body">
+                    <div class="card text-white bg-secondary mb-3" style="width: 45%; display: inline-block">
+                        <div class="card-header text-center" style="font-size: 28px;"><strong>${teamMembers[i].name}</strong></div>
+                        <div class="card-body pt-2">
                             <h5 class="card-title">${teamMembers[i].getRole()}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Employee ID: ${teamMembers[i].getId()}</a>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Email: ${teamMembers[i].getEmail()}</a>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Attribute: ${teamMembers[i].getAttr()}</a>
+                                <a href="" class="text-left list-group-item list-group-item-action list-group-item-secondary">Employee ID: ${teamMembers[i].getId()}</a>
+                                <a href="mailto: ${teamMembers[i].getEmail()}" class="text-left list-group-item list-group-item-action list-group-item-secondary">Email: ${teamMembers[i].getEmail()}</a>
+                                <a href="${hrefGithub}" class="text-left list-group-item list-group-item-action list-group-item-secondary">${attr}${teamMembers[i].getAttr()}</a>
                             </div>
                         </div>
                     </div>`;
             }
-    gHtml += `
+    gHtml += `</div>
             </div>
         </main>
         <footer>
@@ -271,7 +275,6 @@ function generateHtml(){
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="../dist/index.html"></script>
     </body>
 </html>`
 return gHtml;

@@ -16,7 +16,7 @@ test('getEmail returns email', () => {
 });
 
 test('getOffice returns office', () => {
-    expect(testManager.getOffice()).toBe('office');
+    expect(testManager.getAttr()).toBe('office');
 });
 
 test('getRole returns Manager', () => {

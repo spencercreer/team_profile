@@ -16,7 +16,7 @@ test('getEmail returns email', () => {
 });
 
 test('getSchool returns school', () => {
-    expect(testEngineer.getGithub()).toBe('github');
+    expect(testEngineer.getAttr()).toBe('github');
 });
 
 test('getRole returns role', () => {
